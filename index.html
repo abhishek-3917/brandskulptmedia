@@ -4,201 +4,170 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Brandskulptmedia</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #000000;
-      --secondary: #ffffff;
-      --accent: #d4af37; /* gold */
-      --bg-light: #f4f4f4;
-      --font: 'Segoe UI', sans-serif;
-    }
-
-    body {
+    * {
       margin: 0;
-      font-family: var(--font);
-      background-color: var(--secondary);
-      color: var(--primary);
+      padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    a {
+      color: gold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+
     header {
-      background: var(--primary);
-      color: var(--secondary);
-      text-align: center;
-      padding: 4rem 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      margin: 0;
-    }
-
-    header p {
-      color: var(--accent);
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    .logo {
+      color: gold;
+      font-size: 1.8rem;
+      font-weight: bold;
     }
 
     nav {
-      background: var(--secondary);
-      text-align: center;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      display: flex;
+      gap: 30px;
     }
 
     nav a {
-      margin: 0 15px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.2s ease-in-out;
+      font-weight: 600;
+      color: white;
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: gold;
     }
 
-    .section {
-      padding: 3rem 1rem;
-      max-width: 1000px;
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1607083206172-32461d594c61?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      color: white;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: gold;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      color: #ddd;
+    }
+
+    section {
+      padding: 100px 40px;
+      max-width: 1200px;
       margin: auto;
     }
 
-    .section h2 {
+    section h2 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: var(--primary);
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      padding-bottom: 0.5rem;
+      font-size: 2.5rem;
+      color: gold;
+      margin-bottom: 50px;
     }
 
-    .services, .portfolio-grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
       text-align: center;
     }
 
     .service {
-      background: var(--bg-light);
-      padding: 2rem 1rem;
-      border-radius: 10px;
+      background: #111;
+      padding: 20px;
+      border: 1px solid gold;
+      border-radius: 12px;
       transition: transform 0.3s ease;
     }
 
     .service:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
     }
 
-    .service i {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
+    .service img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
     }
 
-    .portfolio-grid img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .testimonial-slider {
-      overflow: hidden;
-      height: 180px;
-      position: relative;
-      margin-top: 2rem;
-    }
-
-    .testimonials {
-      display: flex;
-      animation: slide 12s infinite;
-    }
-
-    .testimonial {
-      flex: 0 0 100%;
-      text-align: center;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
-
-    .testimonial p {
-      font-style: italic;
-      color: #333;
-    }
-
-    .testimonial strong {
-      display: block;
-      margin-top: 0.5rem;
-      color: var(--accent);
-    }
-
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      33% { transform: translateX(-100%); }
-      66% { transform: translateX(-200%); }
-      100% { transform: translateX(0); }
-    }
-
-    .contact {
-      text-align: center;
-    }
-
+    .about p,
     .contact p {
-      margin: 0.4rem 0;
+      color: #ccc;
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.8;
     }
 
     footer {
+      background: #111;
       text-align: center;
-      padding: 1rem;
-      background: #000;
-      color: #fff;
+      padding: 30px 20px;
       font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #333;
     }
 
-    /* WhatsApp Floating Button */
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 14px 16px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
-
-    .whatsapp-button i {
-      margin-right: 8px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
       }
 
-      .services, .portfolio-grid {
-        grid-template-columns: 1fr;
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
       }
 
-      nav a {
-        margin: 10px 10px;
-        display: inline-block;
-      }
-
-      .testimonial-slider {
-        height: auto;
+      .hero p {
+        font-size: 1rem;
       }
     }
   </style>
@@ -206,101 +175,62 @@
 <body>
 
   <header>
-    <h1>Brandskulptmedia</h1>
-    <p>Where Strategy Meets Creativity</p>
+    <div class="logo">Brandskulptmedia</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#instagram">Instagram</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Where Strategy Meets Creativity</h1>
+      <p>Brandskulptmedia helps businesses grow through bold social media, content, and campaigns that turn heads and drive results.</p>
+    </div>
+  </section>
 
-  <section id="services" class="section">
-    <h2>What We Do</h2>
-    <div class="services">
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
       <div class="service">
-        <i class="fas fa-bullhorn"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/2203/2203187.png" alt="Social Media">
         <h3>Social Media</h3>
-        <p>We create content that connects and grows your community.</p>
+        <p>We manage, grow, and transform your brand across all social platforms.</p>
       </div>
       <div class="service">
-        <i class="fas fa-bullseye"></i>
-        <h3>Ads</h3>
-        <p>Targeted ads to increase leads and ROI with data-backed results.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Ads">
+        <h3>Ad Campaigns</h3>
+        <p>Targeted Facebook, Instagram & Google Ads that convert and scale.</p>
       </div>
       <div class="service">
-        <i class="fas fa-camera-retro"></i>
-        <h3>Shoots</h3>
-        <p>Professional visuals to make your brand stand out on every platform.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922730.png" alt="Shoots">
+        <h3>Creative Shoots</h3>
+        <p>High-quality photo & video production tailored to your brand vibe.</p>
       </div>
       <div class="service">
-        <i class="fas fa-lightbulb"></i>
-        <h3>Strategy</h3>
-        <p>Custom branding and marketing strategies for scale & impact.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Strategy">
+        <h3>Brand Strategy</h3>
+        <p>We craft strategies that position your brand for long-term impact.</p>
       </div>
     </div>
   </section>
 
-  <section id="portfolio" class="section">
-    <h2>Portfolio</h2>
-    <div class="portfolio-grid">
-      <img src="https://via.placeholder.com/300x200?text=Client+1" alt="Work 1">
-      <img src="https://via.placeholder.com/300x200?text=Client+2" alt="Work 2">
-      <img src="https://via.placeholder.com/300x200?text=Client+3" alt="Work 3">
-      <img src="https://via.placeholder.com/300x200?text=Client+4" alt="Work 4">
-    </div>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At <strong>Brandskulptmedia</strong>, we’re more than a media agency — we’re your digital creative partner. From defining brand vision to launching performance-driven campaigns, we deliver content and strategy designed to make noise in all the right places.</p>
   </section>
 
-  <section id="testimonials" class="section">
-    <h2>Client Testimonials</h2>
-    <div class="testimonial-slider">
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>"Working with Brandskulptmedia changed our brand image completely. Highly recommended!"</p>
-          <strong>- Aryan Gupta, Café Urban</strong>
-        </div>
-        <div class="testimonial">
-          <p>"We saw 3x growth in Instagram engagement in just one month. Impressive team!"</p>
-          <strong>- Riya Mehta, FitFuel India</strong>
-        </div>
-        <div class="testimonial">
-          <p>"Their creative shoots and ad strategy brought us consistent leads every week."</p>
-          <strong>- Kunal Sen, StyleNest</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="instagram" class="section">
-    <h2>Follow Us on Instagram</h2>
-    <div style="text-align: center;">
-      <!-- 👇 Replace this iframe with your SnapWidget embed -->
-      <iframe src="https://snapwidget.com/embed/YOUR_WIDGET_ID" 
-              class="snapwidget-widget" allowtransparency="true" frameborder="0" 
-              scrolling="no" style="border:none; overflow:hidden; width:100%; max-width:1000px; height:300px;">
-      </iframe>
-    </div>
-  </section>
-
-  <section id="contact" class="section contact">
-    <h2>Contact Us</h2>
-    <p><strong>Website:</strong> <a href="https://www.brandskulptmedia.com" target="_blank">brandskulptmedia.com</a></p>
-    <p><strong>Phone:</strong> 9007195231 | 8777529419</p>
-    <p><strong>Email:</strong> celestial3917@gmail.com</p>
-    <p><strong>Address:</strong> 1/D, Thackwell Road, Belur, Howrah - 711202</p>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:celestial3917@gmail.com">celestial3917@gmail.com</a></p>
+    <p>Phone: <span style="color: gold;">9007195231 / 8777529419</span></p>
+    <p>Website: <a href="https://www.brandskulptmedia.com" target="_blank">www.brandskulptmedia.com</a></p>
   </section>
 
   <footer>
-    &copy; 2025 Brandskulptmedia. Crafted with style & strategy.
+    &copy; 2025 Brandskulptmedia — All rights reserved.
   </footer>
-
-  <!-- WhatsApp Chat Button -->
-  <a href="https://wa.me/919007195231" class="whatsapp-button" target="_blank">
-    <i class="fab fa-whatsapp"></i> Chat with us
-  </a>
 
 </body>
 </html>
